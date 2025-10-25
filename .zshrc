@@ -1,5 +1,7 @@
 export JAVA_HOME=$(/usr/libexec/java_home -v 24.0.1)
 export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$HOME/scripts:$PATH
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -14,6 +16,10 @@ autoload -U colors && colors
 
 bindkey -e
 
+# Aliases
+alias a="source again.sh"
+alias vim="nvim"
+
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -21,9 +27,8 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# Aliases
-alias n="nvim"
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# History config
+setopt INC_APPEND_HISTORY
 
 eval "$(zoxide init zsh)"

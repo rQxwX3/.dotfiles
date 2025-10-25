@@ -9,6 +9,9 @@ vim.opt.colorcolumn = "80"
 vim.opt.showmode = false
 vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 vim.opt.signcolumn = "yes:1"
+vim.opt.showcmd = false
+vim.opt.statusline = "%=%F%m%="
+vim.opt.ruler = false
 
 vim.keymap.set("n", "<leader>xx", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
