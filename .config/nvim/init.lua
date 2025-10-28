@@ -11,11 +11,8 @@ vim.o.showmode = false
 vim.o.showcmd = false
 vim.o.winborder = 'rounded'
 vim.o.ruler = false
-
-
 -- Prevent cursor in terminal from blinking
 vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
-
 vim.g.mapleader = ' '
 
 -- Plugins
@@ -35,6 +32,7 @@ vim.pack.add({
 	{ src = 'https://github.com/arnamak/stay-centered.nvim' },
 })
 
+-- Plugin configuration
 require 'stay-centered'.setup {}
 require 'nvim-autopairs'.setup {}
 require 'neotab'.setup {}
@@ -78,9 +76,7 @@ vim.cmd('hi statusline guibg=NONE')
 vim.cmd('hi statuslineNC guibg=NONE') -- inactive window
 
 -- Keymaps
-vim.keymap.set('n', '<leader>s', ':update<CR> :source<CR>')
 vim.keymap.set('n', '<leader>oo', ':Oil<CR>')
-
 vim.keymap.set('n', '<leader>tt', function() vim.cmd('FloatRunner toggle') end)
 vim.keymap.set('t', '<esc><esc>', function() vim.cmd('FloatRunner toggle') end)
 vim.keymap.set('n', '<leader>fr', function() vim.cmd('FloatRunner run') end)
@@ -116,14 +112,6 @@ vim.api.nvim_create_autocmd('FileType', {
 	end,
 })
 
--- vim.api.nvim_create_autocmd("BufWriteCmd", {
--- 	pattern = "*",
--- 	callback = function()
--- 		vim.cmd("silent! write")
--- 		vim.cmd("echo ''")
--- 	end,
--- })
-
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
@@ -139,9 +127,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 				end,
 			})
 		end
+
+		if client:supports_method('textDocument/completion') then
+			vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup' }
+			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+			vim.keymap.set('i', '<C-Space>', function() vim.lsp.completion.get() end)
+		end
 	end,
 })
-
 
 -- LSP
 vim.lsp.enable({ 'lua_ls', 'clangd' })
