@@ -118,6 +118,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		if not client then return end
 
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+
 		if not client:supports_method('textDocument/willSaveWaitUntil')
 			and client:supports_method('textDocument/formatting') then
 			vim.api.nvim_create_autocmd('BufWritePre', {

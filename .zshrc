@@ -31,4 +31,5 @@ _comp_options+=(globdots)		# Include hidden files.
 # History config
 setopt INC_APPEND_HISTORY
 
-eval "$(zoxide init zsh)"
+# Zoxide config
+eval "$(zoxide init zsh --cmd cd)"
