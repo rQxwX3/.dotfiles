@@ -13,7 +13,7 @@ config.font_size = 18
 
 config.enable_tab_bar = false
 
-config.window_decorations = "RESIZE"
+config.window_decorations = "RESIZE|MACOS_FORCE_SQUARE_CORNERS"
 
 config.color_scheme = "tokyonight_night"
 
