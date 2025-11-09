@@ -87,6 +87,7 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-a = ['exec-and-forget open -a "Arc"', 'workspace A'] 
+	alt-d = ['workspace D']
     alt-f = ['exec-and-forget open -a "Finder"', 'workspace F'] 
     alt-m = ['exec-and-forget open -a "Messages"', 'workspace M'] 
     alt-s = ['exec-and-forget open -a "Settings"', 'workspace S'] 
