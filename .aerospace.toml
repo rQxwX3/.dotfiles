@@ -82,14 +82,14 @@ automatically-unhide-macos-hidden-apps = false
     alt-k = 'focus up'
     alt-l = 'focus right'
 
-	alt-a = ['exec-and-forget open -a "Arc"', 'workspace A',]	
-	alt-d = ['workspace D']
-    alt-f = ['exec-and-forget open -a "Finder"', 'workspace F'] 
-    alt-m = ['exec-and-forget open -a "Messages"', 'workspace M'] 
-    alt-s = ['exec-and-forget open -a "Settings"', 'workspace S'] 
-    alt-t = ['exec-and-forget open -a "Telegram"', 'workspace T'] 
-    alt-v = ['exec-and-forget open -a "Streisand"', 'workspace V'] 
-    alt-w = ['exec-and-forget open -a "Wezterm"', 'workspace W'] 
+	cmd-alt-ctrl-shift-a = ['exec-and-forget open -a "Arc"', 'workspace A',]	
+	cmd-alt-ctrl-shift-d = ['workspace D']
+    cmd-alt-ctrl-shift-f = ['exec-and-forget open -a "Finder"', 'workspace F'] 
+    cmd-alt-ctrl-shift-m = ['exec-and-forget open -a "Messages"', 'workspace M'] 
+    cmd-alt-ctrl-shift-s = ['exec-and-forget open -a "Settings"', 'workspace S'] 
+    cmd-alt-ctrl-shift-t = ['exec-and-forget open -a "Telegram"', 'workspace T'] 
+    cmd-alt-ctrl-shift-v = ['exec-and-forget open -a "Streisand"', 'workspace V'] 
+    cmd-alt-ctrl-shift-w = ['exec-and-forget open -a "Wezterm"', 'workspace W'] 
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-h = 'move left'
