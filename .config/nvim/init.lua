@@ -30,6 +30,7 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
 	{ src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' },
 	{ src = 'https://github.com/arnamak/stay-centered.nvim' },
+	{ src = 'https://github.com/chomosuke/typst-preview.nvim' },
 })
 
 -- Plugin configuration
@@ -69,6 +70,7 @@ require('telescope').setup({
 })
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('zoxide')
+require('typst-preview').setup({})
 
 -- Commands
 vim.cmd('colorscheme tokyonight-night')
@@ -104,8 +106,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function() vim.hl.on_yank() end
 })
 
+
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = "cpp",
+	pattern = 'cpp',
 
 	callback = function()
 		vim.bo.expandtab = true
@@ -139,4 +142,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- LSP
-vim.lsp.enable({ 'lua_ls', 'clangd' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist' })

@@ -60,7 +60,7 @@ automatically-unhide-macos-hidden-apps = false
     outer.right =      0
 
 # This mode is for Mac keyboard usage. Hitting alt as well as other mods proved to be harmful to wrists.
-[mode.launcher.binding]
+[mode.wm.binding]
 	a = ['exec-and-forget open -a "Arc"', 'workspace A', 'mode main']	
 	d = ['workspace D', 'mode main']
     f = ['exec-and-forget open -a "Finder"', 'workspace F', 'mode main'] 
@@ -70,9 +70,17 @@ automatically-unhide-macos-hidden-apps = false
     v = ['exec-and-forget open -a "Streisand"', 'workspace V', 'mode main'] 
     w = ['exec-and-forget open -a "Wezterm"', 'workspace W', 'mode main'] 
 
+    shift-a = ['move-node-to-workspace A', 'workspace A', 'mode main']
+    shift-w = ['move-node-to-workspace W', 'workspace W', 'focus left', 'mode main']
+
+	l = ['focus right', 'mode main']
+	h = ['focus left', 'mode main']
+	j = ['focus down', 'mode main']
+	k = ['focus up', 'mode main']
+
 [mode.main.binding]
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-	shift-esc = 'mode launcher'
+	shift-esc = 'mode wm'
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
