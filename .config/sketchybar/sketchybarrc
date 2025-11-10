@@ -13,6 +13,8 @@ PLUGIN_DIR="~/.config/sketchybar/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 sketchybar --bar position=top height=32 blur_radius=30 color=0xFF000000
+sketchybar --add event aerospace_workspace_change
+sketchybar --add event aerospace_mode
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -34,6 +36,15 @@ default=(
 
 sketchybar --default "${default[@]}"
 
+# Left side items
+sketchybar --add item space left \
+	       --set space script="$PLUGIN_DIR/aerospace.sh" \
+		   --subscribe space aerospace_mode
+
+sketchybar --add item app left \
+	       --set app script="$PLUGIN_DIR/app.sh" \
+		   --subscribe app front_app_switched
+
 # Right side items
 sketchybar --add item calendar right \
 		   --set calendar update_freq=20 script="$PLUGIN_DIR/calendar.sh"
@@ -45,7 +56,6 @@ sketchybar --add item volume right \
 sketchybar --add item battery right \
 	       --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
 		   --subscribe battery system_woke power_source_change
-
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

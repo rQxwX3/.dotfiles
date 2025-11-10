@@ -5,7 +5,7 @@ after-startup-command = [
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+	'sketchybar --trigger aerospace_workspace_change'
 ]
 
 start-at-login = true
@@ -61,26 +61,26 @@ automatically-unhide-macos-hidden-apps = false
 
 # This mode is for Mac keyboard usage. Hitting alt as well as other mods proved to be harmful to wrists.
 [mode.wm.binding]
-	a = ['exec-and-forget open -a "Arc"', 'workspace A', 'mode main']	
+	a = ['exec-and-forget open -a "Arc"', 'workspace A', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']	
 	d = ['workspace D', 'mode main']
-    f = ['exec-and-forget open -a "Finder"', 'workspace F', 'mode main'] 
-    m = ['exec-and-forget open -a "Messages"', 'workspace M', 'mode main'] 
-    s = ['exec-and-forget open -a "Settings"', 'workspace S', 'mode main'] 
-    t = ['exec-and-forget open -a "Telegram"', 'workspace T', 'mode main'] 
-    v = ['exec-and-forget open -a "Streisand"', 'workspace V', 'mode main'] 
-    w = ['exec-and-forget open -a "Wezterm"', 'workspace W', 'mode main'] 
+    f = ['exec-and-forget open -a "Finder"', 'workspace F', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main'] 
+    m = ['exec-and-forget open -a "Messages"', 'workspace M', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main'] 
+    s = ['exec-and-forget open -a "Settings"', 'workspace S', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main'] 
+    t = ['exec-and-forget open -a "Telegram"', 'workspace T', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main'] 
+    v = ['exec-and-forget open -a "Streisand"', 'workspace V', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main'] 
+    w = ['exec-and-forget open -a "Wezterm"', 'workspace W', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main'] 
 
-    shift-a = ['move-node-to-workspace A', 'workspace A', 'mode main']
-    shift-w = ['move-node-to-workspace W', 'workspace W', 'focus left', 'mode main']
+    shift-a = ['move-node-to-workspace A', 'workspace A', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
+    shift-w = ['move-node-to-workspace W', 'workspace W', 'focus left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
 
-	l = ['focus right', 'mode main']
-	h = ['focus left', 'mode main']
-	j = ['focus down', 'mode main']
-	k = ['focus up', 'mode main']
+	l = ['focus right', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
+	h = ['focus left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
+	j = ['focus down', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
+	k = ['focus up', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
 
 [mode.main.binding]
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-	shift-esc = 'mode wm'
+	shift-esc = ['mode wm','exec-and-forget sketchybar --trigger aerospace_mode MODE=wm' ]
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
