@@ -92,11 +92,13 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags)
 vim.keymap.set('n', '<leader>lsp', function()
 	builtin.diagnostics({ bufnr = 0 })
 end)
+
 vim.keymap.set('n', '<leader>en', function()
 	builtin.find_files({
 		cwd = vim.fn.stdpath('config'), prompt_title = 'Neovim config'
 	})
 end)
+
 vim.keymap.set('n', '<leader>zl', function()
 	require('telescope').extensions.zoxide.list()
 end)
@@ -106,6 +108,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function() vim.hl.on_yank() end
 })
 
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged' }, {
+	callback = function()
+		if #vim.api.nvim_buf_get_name(0) ~= 0 and vim.bo.buflisted then
+			vim.cmd "silent w"
+		end
+	end,
+})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'cpp',
