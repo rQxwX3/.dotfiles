@@ -81,7 +81,6 @@ automatically-unhide-macos-hidden-apps = false
 
 [mode.main.binding]
 	shift-esc = ['mode wm','exec-and-forget sketchybar --trigger aerospace_mode MODE=wm' ]
-	cmd-space = ['mode wm','exec-and-forget sketchybar --trigger aerospace_mode MODE=wm' ]
 
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
