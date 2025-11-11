@@ -61,6 +61,8 @@ automatically-unhide-macos-hidden-apps = false
 
 # This mode is for Mac keyboard usage. Hitting alt as well as other mods proved to be harmful to wrists.
 [mode.wm.binding]
+	esc = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
+
 	a = ['exec-and-forget open -a "Arc"', 'workspace A', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']	
 	d = ['workspace D', 'mode main']
     f = ['exec-and-forget open -a "Finder"', 'workspace F', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main'] 
@@ -74,10 +76,10 @@ automatically-unhide-macos-hidden-apps = false
     shift-a = ['move-node-to-workspace A', 'workspace A', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
     shift-w = ['move-node-to-workspace W', 'workspace W', 'focus left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
 
-	l = ['focus right', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
-	h = ['focus left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
-	j = ['focus down', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
-	k = ['focus up', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
+	l = ['focus right' ]
+	h = ['focus left' ]
+	j = ['focus down']
+	k = ['focus up']
 
 [mode.main.binding]
 	shift-esc = ['mode wm','exec-and-forget sketchybar --trigger aerospace_mode MODE=wm' ]
