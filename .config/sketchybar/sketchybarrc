@@ -39,7 +39,7 @@ sketchybar --default "${default[@]}"
 # Left side items
 sketchybar --add item space left \
 	       --set space script="$PLUGIN_DIR/aerospace.sh" \
-		   --subscribe space aerospace_mode
+		   --subscribe space aerospace_mode aerospace_workspace_change
 
 sketchybar --add item app left \
 	       --set app script="$PLUGIN_DIR/app.sh" \
