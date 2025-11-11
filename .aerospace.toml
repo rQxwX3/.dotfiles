@@ -80,27 +80,27 @@ automatically-unhide-macos-hidden-apps = false
 	k = ['focus up', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
 
 [mode.main.binding]
-    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 	shift-esc = ['mode wm','exec-and-forget sketchybar --trigger aerospace_mode MODE=wm' ]
 	cmd-space = ['mode wm','exec-and-forget sketchybar --trigger aerospace_mode MODE=wm' ]
+
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    cmd-alt-ctrl-shift-h = 'focus left'
-    cmd-alt-ctrl-shift-j = 'focus down'
-    cmd-alt-ctrl-shift-k = 'focus up'
-    cmd-alt-ctrl-shift-l = 'focus right'
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
 
-	cmd-alt-ctrl-shift-a = ['exec-and-forget open -a "Arc"', 'workspace A',]	
-	cmd-alt-ctrl-shift-d = ['workspace D']
-    cmd-alt-ctrl-shift-f = ['exec-and-forget open -a "Finder"', 'workspace F'] 
-    cmd-alt-ctrl-shift-m = ['exec-and-forget open -a "Messages"', 'workspace M'] 
-    cmd-alt-ctrl-shift-s = ['exec-and-forget open -a "Settings"', 'workspace S'] 
-    cmd-alt-ctrl-shift-t = ['exec-and-forget open -a "Telegram"', 'workspace T'] 
-    cmd-alt-ctrl-shift-v = ['exec-and-forget open -a "Streisand"', 'workspace V'] 
-    cmd-alt-ctrl-shift-w = ['exec-and-forget open -a "Wezterm"', 'workspace W'] 
-    cmd-alt-ctrl-shift-p = ['exec-and-forget open -a "Sioyek"', 'workspace P'] 
+	alt-a = ['exec-and-forget open -a "Arc"', 'workspace A',]	
+	alt-d = ['workspace D']
+    alt-f = ['exec-and-forget open -a "Finder"', 'workspace F'] 
+    alt-m = ['exec-and-forget open -a "Messages"', 'workspace M'] 
+    alt-s = ['exec-and-forget open -a "Settings"', 'workspace S'] 
+    alt-t = ['exec-and-forget open -a "Telegram"', 'workspace T'] 
+    alt-v = ['exec-and-forget open -a "Streisand"', 'workspace V'] 
+    alt-w = ['exec-and-forget open -a "Wezterm"', 'workspace W'] 
+    alt-p = ['exec-and-forget open -a "Sioyek"', 'workspace P'] 
 
     alt-shift-a = ['move-node-to-workspace A', 'workspace A', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
     alt-shift-w = ['move-node-to-workspace W', 'workspace W', 'focus left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode MODE=main']
