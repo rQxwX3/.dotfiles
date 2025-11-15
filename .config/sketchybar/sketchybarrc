@@ -1,25 +1,10 @@
 #!/bin/bash
-# This is a demo config to showcase some of the most important commands.
-# It is meant to be changed and configured, as it is intentionally kept sparse.
-# For a (much) more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
-PLUGIN_DIR="~/.config/sketchybar/plugins"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+PLUGIN_DIR="~/.config/sketchybar/plugins"
 
 sketchybar --bar position=top height=32 blur_radius=30 color=0xFF000000
 sketchybar --add event aerospace_workspace_change
 sketchybar --add event aerospace_mode
-
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
   padding_left=5
