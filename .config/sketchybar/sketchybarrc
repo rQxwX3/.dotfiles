@@ -49,6 +49,9 @@ sketchybar --add item app left \
 sketchybar --add item calendar right \
 		   --set calendar update_freq=20 script="$PLUGIN_DIR/calendar.sh"
 
+sketchybar --add item vpn right \
+	       --set vpn update_freq=5 script="$PLUGIN_DIR/vpn.sh"
+
 sketchybar --add item volume right \
 		   --set volume script="$PLUGIN_DIR/volume.sh" \
 		   --subscribe volume volume_change
