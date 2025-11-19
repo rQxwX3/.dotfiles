@@ -1,0 +1,2 @@
+# .dotfiles
+[WezTerm](https://github.com/rQxwX3/.dotfiles/tree/main/.config/wezterm) · [zsh](https://github.com/rQxwX3/.dotfiles/blob/main/.zshrc) · [powerlevel10k](https://github.com/rQxwX3/.dotfiles/blob/main/.p10k.zsh) · [Neovim](https://github.com/rQxwX3/.dotfiles/tree/main/.config/nvim) · [Aerospace](https://github.com/rQxwX3/.dotfiles/blob/main/.aerospace.toml) · [Sketchybar](https://github.com/rQxwX3/.dotfiles/tree/main/.config/sketchybar)
