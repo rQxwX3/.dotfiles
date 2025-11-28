@@ -124,6 +124,15 @@ vim.api.nvim_create_autocmd('FileType', {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+	pattern = 'COMMIT_EDITMSG',
+
+	callback = function()
+		vim.bo.textwidth = 72
+		vim.bo.formatoptions = vim.bo.formatoptions .. 't'
+	end,
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
@@ -151,4 +160,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- LSP
-vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist', 'sourcekit' })
