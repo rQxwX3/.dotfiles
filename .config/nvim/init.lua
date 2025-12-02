@@ -79,10 +79,14 @@ vim.cmd('hi statuslineNC guibg=NONE') -- inactive window
 
 -- Keymaps
 vim.keymap.set('n', '<leader>oo', ':Oil<CR>')
+
 vim.keymap.set('n', '<leader>tt', function() vim.cmd('FloatRunner toggle') end)
 vim.keymap.set('t', '<esc><esc>', function() vim.cmd('FloatRunner toggle') end)
 vim.keymap.set('n', '<leader>fr', function() vim.cmd('FloatRunner run') end)
 vim.keymap.set('n', '<leader>fb', function() vim.cmd('FloatRunner build') end)
+
+vim.keymap.set('n', 'j', 'gj', { noremap = true });
+vim.keymap.set('n', 'k', 'gk', { noremap = true });
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>fd', builtin.find_files)
