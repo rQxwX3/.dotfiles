@@ -11,6 +11,7 @@ vim.o.showmode = false
 vim.o.showcmd = false
 vim.o.winborder = 'rounded'
 vim.o.ruler = false
+vim.o.cursorline = true
 -- Prevent cursor in terminal from blinking
 vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
 vim.g.mapleader = ' '
