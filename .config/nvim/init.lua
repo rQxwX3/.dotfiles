@@ -32,9 +32,18 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' },
 	{ src = 'https://github.com/arnamak/stay-centered.nvim' },
 	{ src = 'https://github.com/chomosuke/typst-preview.nvim' },
+	{
+		src = 'https://github.com/saghen/blink.cmp',
+		version = vim.version.range("*")
+	},
 })
 
+
+
 -- Plugin configuration
+require('blink.cmp').setup({
+	signature = { enabled = true }
+})
 require 'stay-centered'.setup {}
 require 'nvim-autopairs'.setup {}
 require 'neotab'.setup {}
@@ -81,6 +90,10 @@ vim.cmd('hi statuslineNC guibg=NONE') -- inactive window
 -- Keymaps
 vim.keymap.set('n', '<leader>oo', ':Oil<CR>')
 
+vim.keymap.set('n', '<leader>h', function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled());
+end)
+
 vim.keymap.set('n', '<leader>tt', function() vim.cmd('FloatRunner toggle') end)
 vim.keymap.set('t', '<esc><esc>', function() vim.cmd('FloatRunner toggle') end)
 vim.keymap.set('n', '<leader>fr', function() vim.cmd('FloatRunner run') end)
@@ -92,7 +105,7 @@ vim.keymap.set('n', 'k', 'gk', { noremap = true });
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>fd', builtin.find_files)
 vim.keymap.set('n', '<leader>lg', builtin.live_grep)
-vim.keymap.set('n', '<leader>fb', builtin.buffers)
+vim.keymap.set('n', '<leader>bb', builtin.buffers)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags)
 vim.keymap.set('n', '<leader>lsp', function()
 	builtin.diagnostics({ bufnr = 0 })
@@ -146,8 +159,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		if not client then return end
 
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-
 		if not client:supports_method('textDocument/willSaveWaitUntil')
 			and client:supports_method('textDocument/formatting') then
 			vim.api.nvim_create_autocmd('BufWritePre', {
@@ -157,14 +168,47 @@ vim.api.nvim_create_autocmd('LspAttach', {
 				end,
 			})
 		end
-
-		if client:supports_method('textDocument/completion') then
-			vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup' }
-			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-			vim.keymap.set('i', '<C-Space>', function() vim.lsp.completion.get() end)
-		end
 	end,
 })
 
 -- LSP
-vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist', 'sourcekit' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist' })
+
+vim.lsp.config('clangd', {
+	settings = {
+		clangd = {
+			InlayHints = {
+				Designators = true,
+				Enabled = true,
+				ParameterNames = true,
+				DeducedTypes = true,
+			},
+			fallbackFlags = { "-std=c++20" },
+		},
+	}
+})
+
+vim.lsp.config('lua_ls', {
+	settings = {
+		Lua = {
+			hint = { enable = true },
+			runtime = {
+				version = 'LuaJIT',
+			},
+			diagnostics = {
+				globals = {
+					'vim',
+					'require',
+				},
+			},
+			workspace = {
+				library = {
+					vim.api.nvim_get_runtime_file("", true),
+				}
+			},
+			telemetry = {
+				enable = false,
+			},
+		}
+	}
+})
