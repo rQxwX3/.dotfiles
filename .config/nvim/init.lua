@@ -21,7 +21,6 @@ vim.pack.add({
 	{ src = 'https://github.com/folke/tokyonight.nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/kawre/neotab.nvim' },
-	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = 'https://github.com/windwp/nvim-autopairs' },
 	{ src = 'https://github.com/rQxwX3/floatrunner.nvim' },
 	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
@@ -37,8 +36,6 @@ vim.pack.add({
 		version = vim.version.range("*")
 	},
 })
-
-
 
 -- Plugin configuration
 require('blink.cmp').setup({
@@ -173,42 +170,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- LSP
 vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist' })
-
-vim.lsp.config('clangd', {
-	settings = {
-		clangd = {
-			InlayHints = {
-				Designators = true,
-				Enabled = true,
-				ParameterNames = true,
-				DeducedTypes = true,
-			},
-			fallbackFlags = { "-std=c++20" },
-		},
-	}
-})
-
-vim.lsp.config('lua_ls', {
-	settings = {
-		Lua = {
-			hint = { enable = true },
-			runtime = {
-				version = 'LuaJIT',
-			},
-			diagnostics = {
-				globals = {
-					'vim',
-					'require',
-				},
-			},
-			workspace = {
-				library = {
-					vim.api.nvim_get_runtime_file("", true),
-				}
-			},
-			telemetry = {
-				enable = false,
-			},
-		}
-	}
-})
