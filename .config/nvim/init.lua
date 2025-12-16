@@ -62,6 +62,12 @@ require 'floatrunner'.setup {
 	builds = { ['Makefile'] = 'make' }
 }
 require('telescope').setup({
+	defaults = {
+		file_ignore_patterns = {
+			"build",
+			"CMakeFiles",
+		},
+	},
 	extensions = {
 		fzf = {},
 		zoxide = {
@@ -167,6 +173,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 	end,
 })
+
+-- Highlight
+vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = 'none' })
 
 -- LSP
 vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist' })
