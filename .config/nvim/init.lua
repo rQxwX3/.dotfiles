@@ -67,6 +67,7 @@ require('telescope').setup({
 			"build",
 			"CMakeFiles",
 			"cmake",
+			"lib",
 		},
 	},
 	extensions = {
