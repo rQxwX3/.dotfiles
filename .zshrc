@@ -10,6 +10,10 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 bindkey -e
 bindkey ' ' magic-space
 
+chpwd() {
+	ls
+}
+
 alias vim="nvim"
 
 eval "$(zoxide init zsh --cmd cd)"
