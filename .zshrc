@@ -16,4 +16,14 @@ chpwd() {
 
 alias vim="nvim"
 
+alias -s cpp="$EDITOR"
+alias -s hpp="$EDITOR"
+
+alias -s c="$EDITOR"
+alias -s h="$EDITOR"
+
+alias -s md="$EDITOR"
+
+alias -g C="| pbcopy"
+
 eval "$(zoxide init zsh --cmd cd)"
