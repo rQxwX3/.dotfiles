@@ -159,6 +159,17 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 	end,
 })
 
+-- Automatic LSP log cleanup
+local log_file = vim.fn.expand('~/.local/state/nvim/lsp.log')
+local max_lines = 100000
+
+if vim.fn.filereadable(log_file) == 1 then
+	local lines = vim.fn.readfile(log_file)
+	if #lines > max_lines then
+		vim.fn.writefile(vim.list_slice(lines, #lines - max_lines + 1, #lines), log_file)
+	end
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
