@@ -59,7 +59,8 @@ require 'floatrunner'.setup {
 		}
 	},
 
-	builds = { ['Makefile'] = 'make' }
+	builds = { ['Makefile.root'] = 'make -f Makefile.root rebuild run' },
+
 }
 require('telescope').setup({
 	defaults = {

@@ -11,6 +11,7 @@ bindkey -e
 bindkey ' ' magic-space
 
 chpwd() {
+	clear
 	ls
 }
 
