@@ -46,8 +46,10 @@ require 'nvim-autopairs'.setup {}
 require 'neotab'.setup {}
 require 'oil'.setup {}
 require 'nvim-treesitter.configs'.setup({
-	ensure_installed = { 'c', 'cpp', 'lua', 'java', 'javascript', 'python', 'rust' },
-	highlight = { enabled = true },
+	ensure_installed = { 'c', 'cpp', 'lua', 'java', 'javascript', 'python', 'rust', 'go' },
+	highlight = {
+		enable = true,
+	},
 	auto_install = true,
 })
 require 'floatrunner'.setup {
@@ -95,6 +97,7 @@ vim.cmd('hi statuslineNC guibg=NONE') -- inactive window
 
 -- Keymaps
 vim.keymap.set('n', '<leader>oo', ':Oil<CR>')
+
 
 vim.keymap.set('n', '<leader>h', function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled());
@@ -159,6 +162,24 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		vim.schedule(function()
+			if vim.fn.argc() == 0 and vim.v.oldfiles[1] then
+				vim.cmd("edit " .. vim.fn.fnameescape(vim.v.oldfiles[1]))
+
+				-- restore last cursor position
+				local line = vim.fn.line([['"]])
+				local last_line = vim.fn.line("$")
+
+				if line > 0 and line <= last_line then
+					vim.cmd([[normal! g`"]])
+				end
+			end
+		end)
+	end,
+})
+
 -- Automatic LSP log cleanup
 local log_file = vim.fn.expand('~/.local/state/nvim/lsp.log')
 local max_lines = 100000
@@ -197,4 +218,4 @@ vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = 'none' })
 
 -- LSP
-vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'tinymist', 'gopls' })

@@ -16,5 +16,6 @@ config.colors = {
 }
 
 config.audible_bell = "Disabled"
+config.cursor_blink_rate = 0
 
 return config

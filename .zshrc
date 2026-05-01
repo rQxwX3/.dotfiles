@@ -28,3 +28,9 @@ alias -s md="$EDITOR"
 alias -g C="| pbcopy"
 
 eval "$(zoxide init zsh --cmd cd)"
+export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
+export PATH=$PATH:$HOME/go/bin
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
